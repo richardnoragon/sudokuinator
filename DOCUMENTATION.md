@@ -33,6 +33,36 @@ external links are preserved snapshots, not maintained instructions or live-sour
 
 Rebranding and migration: [REBRANDING.md](REBRANDING.md).
 
+## Template implementation
+
+The root project documents implement the outlines in `Project Documents Templates/`.
+Existing architecture, decision history, release gates, security guidance, tests,
+and user workflows remain authoritative. [TOC.md](TOC.md) provides a short entry
+point; [FAQ.md](FAQ.md) answers common user questions. Template examples from other
+Inator applications do not establish Sudoku-inator features or release evidence.
+
+The missing license and community policy are supplied by [LICENSE.md](LICENSE.md)
+and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md). [USER_ASSISTANCE.md](USER_ASSISTANCE.md)
+maps the generic help outline to implemented desktop features and future work.
+
+| Template | Maintained implementation |
+| --- | --- |
+| README | README.md: overview, installation, play, navigation, license |
+| ARCHITECTURE | ARCHITECTURE.md: controller hub, modules, services, signals, JSON storage, extension limits |
+| CHANGELOG | CHANGELOG.md: Unreleased work and versioned baseline |
+| CODE_OF_CONDUCT | CODE_OF_CONDUCT.md: expectations, scope, reporting, enforcement |
+| CONTRIBUTING | CONTRIBUTING.md: setup, style, branches, commits, PR and test requirements |
+| DECISIONS | DECISIONS.md: decisions, rationale and consequences |
+| FAQ | FAQ.md: common questions grounded in current behavior |
+| LICENSE | LICENSE.md: full GPLv3 terms; pyproject.toml: package declaration |
+| RELEASE_PROCESS | RELEASE_PROCESS.md: freeze, RC, trials, approvals, regression gate |
+| ROADMAP | ROADMAP.md: implemented foundations, next milestone, future scope |
+| SECURITY | SECURITY.md: support, private reporting, storage, backup guidance |
+| TESTING | TESTING.md: strategy, regression/acceptance checks, dated evidence |
+| TOC | TOC.md: short navigation index |
+| USER_GUIDE | USER_GUIDE.md: install, play, exchange, save/recovery, help |
+| help_outline | USER_ASSISTANCE.md and ui/help_system.py: app-specific assistance and remaining proposals |
+
 ## Project document inventory
 
 | Document | Role |

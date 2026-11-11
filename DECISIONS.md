@@ -1,5 +1,20 @@
 # Architectural Decisions
 
+## Offline assistance and licensing (2026-11-11)
+
+Decision: keep assistance local in a dedicated Qt UI module; the shell binds live
+actions and tour targets. Store only the first-launch welcome flag in QSettings.
+
+Reason: users can learn while playing without requiring network services or
+changing persistence. Consequences: help articles must be kept aligned with the
+user guide, and guided steps currently rely on user confirmation rather than
+automatic completion detection. This does not complete manual accessibility review.
+
+The project owner selected GNU GPL version 3 for project code (`GPL-3.0-only`).
+The full terms are in [LICENSE.md](LICENSE.md) and package metadata records the
+choice. Third-party components and attributed reference material retain their own
+terms. This supersedes the unchosen alternatives in the reusable license outline.
+
 ## Full rebrand (2026-10-10)
 
 The project, command, repository target, and workspace are `sudoku-inator`;

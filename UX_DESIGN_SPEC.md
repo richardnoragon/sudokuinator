@@ -3,7 +3,7 @@
 ## Alpha alignment
 
 For [Alpha](alpha.md), primary controls and data safeguards must work end-to-end.
-Font customization, tutorials, and visual refinements may remain documented work;
+Font customization and visual refinements may remain documented work;
 Alpha does not waive the broader accessibility and publication requirements.
 Current status and blockers are recorded in [PROJECT_STATUS.md](PROJECT_STATUS.md).
 
@@ -14,7 +14,9 @@ This is the target UX specification. Implemented controls are described in
 [PROJECT_STATUS.md](PROJECT_STATUS.md). Initial labels/tooltips and status feedback
 are delivered. Codewords hypotheses, large-grid input, import/export UI, and
 unsaved-progress confirmations now have regression
-coverage. Adjustable fonts, contextual onboarding, and manual accessibility remain open.
+coverage. Welcome, tours, guided tasks, and offline/context help are implemented; see
+[USER_ASSISTANCE.md](USER_ASSISTANCE.md). Adjustable fonts and manual accessibility
+remain open.
 The journeys below are acceptance goals, not claims of full implementation.
 
 

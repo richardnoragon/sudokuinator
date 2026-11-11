@@ -6,7 +6,7 @@ independent developer handoff and manual acceptance remain. See
 
 | Phase | Current implementation | Remaining work |
 | --- | --- | --- |
-| 0 — UX/accessibility | Keyboard entry, labels/tooltips, Save/Discard/Cancel safeguards | DOC-06 fonts, contextual help, manual accessibility |
+| 0 — UX/accessibility | Keyboard entry, labels/tooltips, Save/Discard/Cancel safeguards | DOC-06 fonts and manual accessibility; welcome/tour/offline help implemented |
 | 1 — Core | Gameplay, hints, notes, undo/redo, timer, save/resume/restart | Independent/manual workflow assessment |
 | 2 — Additional variants | Jigsaw, Str8ts, Killer, SE grading; generation repairs tested | Layout variety and difficulty calibration |
 | 3 — Persistence/exchange | JSON v2, backups, original clues, hypotheses, UI text/JSON exchange | Manual platform recovery checks |

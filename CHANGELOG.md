@@ -28,6 +28,16 @@ the dated baseline below is not evidence of publication.
 
 ## [Unreleased]
 
+### Documentation and assistance (2026-11-11)
+
+- Added FAQ, documentation contents, community conduct policy, and GNU GPLv3
+  license; retained reusable document outlines.
+- Added first-launch welcome, replayable feature tour, guided tasks, offline
+  searchable help, context help, and search for enabled actions.
+- Expanded contributor conventions and assistance architecture/user guidance.
+- Application version and save schema remain unchanged.
+
+
 ### Full rebrand (2026-10-10)
 
 - Renamed the internal Python package to `sudoku_inator`, updated imports, UI

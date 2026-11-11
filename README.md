@@ -27,8 +27,8 @@ Requires Python 3.13+ and a desktop environment. PyQt6 >=6.10 is installed as a 
 Clone the repository and enter its directory:
 
 ```bash
-git clone https://github.com/richardnoragon/sudoku-inator.git
-cd sudoku-inator
+git clone https://github.com/richardnoragon/sudokuinator.git
+cd sudokuinator
 ```
 
 Create a virtual environment:
@@ -106,6 +106,13 @@ pencil mode or **H** for the selected hint mode.
 Use **File → Save** and **File → Open** to save and resume JSON games.
 See the [user guide](USER_GUIDE.md) for controls and current limitations.
 
+## Help preview
+
+![Desktop puzzle with searchable offline help](docs/images/help-center.png)
+
+Open Help for the welcome flow, feature tour, guided tasks, and offline articles.
+F1 provides context help; Ctrl+Shift+P searches available actions.
+
 ## Development checks
 
 ```bash
@@ -123,9 +130,17 @@ See [TESTING.md](TESTING.md) for PowerShell commands, current results, and CI sc
 
 ## Documentation
 
+- [Documentation contents](TOC.md) and [frequently asked questions](FAQ.md)
 - [Documentation index and authority](DOCUMENTATION.md)
 - [Architecture](ARCHITECTURE.md) and [decisions](DECISIONS.md)
 - [Requirements](prd.md) and [UX direction](UX_DESIGN_SPEC.md)
 - [Roadmap](ROADMAP.md), [implementation issues](IMPLEMENTATION_ISSUES.md), and [tasks](speckit.tasks)
 - [Contributing](CONTRIBUTING.md), [release process](RELEASE_PROCESS.md), and [release checklist](RELEASE_CHECKLIST.md)
 - [Changelog](CHANGELOG.md), [save migrations](MIGRATIONS.md), and [security policy](SECURITY.md)
+
+## License and community
+
+Project code is licensed under [GNU GPL version 3](LICENSE.md) (`GPL-3.0-only`).
+Third-party dependencies and attributed reference material retain their own terms.
+See the [code of conduct](CODE_OF_CONDUCT.md) and
+[in-app help overview](USER_ASSISTANCE.md).

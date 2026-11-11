@@ -50,6 +50,7 @@ Add `--json` when a caller needs the machine-readable object rather than the lis
 
 - `requirements-outside-capability` — every file marker names code the capability does not claim, so nothing resolves for that behaviour.
 - `capability-claims-undescribed-code` — the capability claims code no requirement describes, so a change there is briefed with nothing.
+
 | `unbalanced-fence` | warning | A code fence is opened and never closed, so everything after it is invisible to every reader. |
 
 Severity answers exactly one question: whether the fold stops. An error means the durable record would be damaged; a warning means it would be untidy.
