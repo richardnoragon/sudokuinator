@@ -112,3 +112,15 @@ search cannot prove uniqueness. Generation levels remain heuristic.
 - Use the offscreen Qt setting for tests; use a normal desktop session to play.
 - If a save cannot load, try a backup. Saves from newer schema versions are rejected.
 - Report reproducible problems with the variant, difficulty, steps, and error message.
+
+## In-app help and first launch
+
+On first launch, Welcome offers a new puzzle, opening a save, exploration of the
+current puzzle, or a feature tour. Close keeps your game. Replay it from Help →
+Welcome. Help also provides a searchable offline user guide, troubleshooting,
+shortcuts, release notes, and guided tasks for play/save, import, and recovery.
+
+Press F1 for context help or Ctrl+Shift+P to find an action by name. The nonmodal
+feature tour highlights the actual controls; Back/Next advances the steps and
+Close ends the tour. Guided tasks let you perform each step yourself; completion
+is not automatically checked. See [user assistance](USER_ASSISTANCE.md).

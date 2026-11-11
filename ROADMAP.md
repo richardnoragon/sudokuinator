@@ -47,7 +47,9 @@ See [milestone overview](milestone_roadmap.md) and
 
 - Calibrate difficulty labels with a reviewed variant corpus.
 - Expand malformed-input and variant scenario coverage.
-- Add onboarding, contextual variant help, font controls, and palette customization.
+- Expand the implemented welcome, tours, offline help, and guided tasks with
+  automatic completion detection and deeper variant-specific guidance; add font
+  controls and palette customization.
 - Build a puzzle library UI around the existing puzzle-pack APIs.
 - Improve large-grid performance and reduce duplicated variant rules across layers.
 

@@ -16,7 +16,7 @@ remain. [PROJECT_STATUS.md](PROJECT_STATUS.md) records evidence and limitations.
 - [x] **DOC-03** Restore allowance/notes/original puzzle; document session-local history; preserve timer on failed save.
 - [x] **DOC-04** F4/Enter Value supports full 1–25 entry, pencil marks, deletion, undo/redo, completion.
 - [x] **DOC-05** Hide unknown Codewords mappings; editable hypotheses with undo/redo and persistence.
-- [ ] **DOC-06** Unsaved-progress safeguards implemented/tested; font controls, contextual help, manual accessibility remain.
+- [ ] **DOC-06** Unsaved-progress safeguards implemented/tested; welcome/tour/offline help/guided tasks implemented; font controls and manual accessibility remain.
 - [ ] **DOC-07** Automated lifecycle/local install evidence added; manual platforms, current CI/rulesets, publication approvals remain.
 - [x] **DOC-08** Remove class-scoped fixture deprecation warnings.
 - [ ] **DOC-09** Independent clone/build/run/test/change handoff and architecture review.

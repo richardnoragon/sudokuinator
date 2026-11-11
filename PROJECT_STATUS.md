@@ -51,7 +51,7 @@ names, package versions, and this implementation pass do not certify those gates
 | DOC-03 | Implemented and tested | Restore remaining allowance and saved notes; original puzzle persisted for Restart; history remains session-local; failed saves preserve timer state |
 | DOC-04 | Implemented and tested | F4 / Enter Value supports 1–25, pencil marks, deletion, undo/redo, and completion |
 | DOC-05 | Implemented and tested | Only given Codewords mappings revealed; hypotheses editable, distinct, undoable, and saved |
-| DOC-06 | Partially complete | Unsaved-progress confirmations tested; font controls, tutorial/context help, and manual accessibility review remain |
+| DOC-06 | Partially complete | Unsaved-progress confirmations tested; welcome, tour, guided tasks, and offline/context help added in the November development update; font controls and manual accessibility review remain |
 | DOC-07 | Partially complete | Automated variant lifecycle and local installation checks; manual desktop/platform sessions, current remote CI/ruleset evidence, and approvals remain |
 | DOC-08 | Implemented and tested | Class-scoped fixture uses static methods; deprecation warnings removed |
 | DOC-09 | Open | Independent developer handoff and architecture stability review |

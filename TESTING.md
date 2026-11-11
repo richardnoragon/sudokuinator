@@ -19,7 +19,25 @@ Promote only after all [seven criteria](PROJECT_STATUS.md#alpha-readiness) are m
 Beta needs ordinary-user reliability evidence; publication also needs current
 platform CI, governance, and release approvals.
 
-## Latest local validation
+## Assistance validation (2026-11-11)
+
+Tested by the implementing Codex agent on Linux with Python 3.14.4, working tree
+based on `f5027a9`. This is not an independent usability or accessibility review.
+
+- `PYTHONPATH=src QT_QPA_PLATFORM=offscreen python3 -m pytest -q`: **620 passed**.
+- `python3 -m ruff check src`: passed; `python3 -m mypy`: passed for its model scope.
+- Markdown lint passed across all 134 discovered Markdown files; maintained-document
+  local file links and whitespace checks passed.
+- Built the wheel with `python3 -m pip wheel --no-deps --no-build-isolation .`.
+- New help checks cover topic/body search, empty results, enabled action execution,
+  tour navigation/finish/replay and Escape cleanup without board changes, welcome dismissal and its
+  settings flag, and F1 from the focused board.
+- Inspected offscreen help and tour captures. Manual desktop placement, keyboard
+  and screen-reader review across platforms remain release work.
+
+The local `.venv` lacks pytest, so checks used system `python3` with `PYTHONPATH=src`.
+
+## Previous local validation (2026-10-01)
 
 Implementation pass on **2026-10-01**, working tree based on `2149d7d`.
 Tester: the implementing Codex agent; this is not the independent DOC-09 handoff.

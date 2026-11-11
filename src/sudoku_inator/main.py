@@ -5,7 +5,7 @@ import random
 import sys
 from pathlib import Path
 
-from PyQt6.QtCore import Qt, QTimer
+from PyQt6.QtCore import Qt, QTimer, QSettings
 from PyQt6.QtGui import QAction, QActionGroup, QIntValidator, QKeySequence
 from PyQt6.QtWidgets import (
     QApplication,
@@ -48,6 +48,8 @@ class MainWindow(QMainWindow):
         from PyQt6.QtWidgets import QScrollArea
         self._grid = SudokuGridWidget()
         self._grid.setAccessibleName("Sudoku board")
+        self._grid.setToolTip("Select an empty cell, type 1–9, or press F4 for larger values. F1 opens help.")
+        self._grid.setWhatsThis("Enter values or pencil marks here. Fixed clues and black cells are locked.")
         scroll = QScrollArea()
         scroll.setWidget(self._grid)
         scroll.setWidgetResizable(True)
@@ -223,6 +225,105 @@ class MainWindow(QMainWindow):
 
         view_menu = mb.addMenu("&View")
         view_menu.addAction(self._act_dark)
+
+        self._build_help()
+
+    def _build_help(self):
+        from sudoku_inator.ui.help_system import HelpCenter, ActionSearch
+        self._help = HelpCenter(self)
+        self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self._help)
+        self._help.hide()
+        menu = self.menuBar().addMenu("&Help")
+        entries = [
+            ("Getting Started", lambda: self._help.open_topic("Getting Started")),
+            ("Welcome", self._show_welcome),
+            ("Feature Tour", self._start_tour),
+            ("Guided Tasks", self._guided_task),
+            ("User Guide", lambda: self._help.open_topic("User Guide")),
+            ("Search Help", lambda: self._help.open_topic()),
+            ("Troubleshooting", lambda: self._help.open_topic("Troubleshooting")),
+            ("Keyboard Shortcuts", lambda: self._help.open_topic("Keyboard Shortcuts")),
+            ("Release Notes", lambda: self._help.open_topic("Release Notes")),
+            ("Report Problem", lambda: self._help.open_topic("Report Problem")),
+            ("About", lambda: self._help.open_topic("About")),
+        ]
+        for label, callback in entries:
+            action = self._action(label, "", label)
+            action.triggered.connect(callback)
+            menu.addAction(action)
+        self._act_context_help = self._action("Context Help", "F1", "Help for the focused control")
+        self._act_context_help.triggered.connect(self._context_help)
+        menu.addAction(self._act_context_help)
+        self._act_search_actions = self._action("Search Actions", "Ctrl+Shift+P", "Find and run an action")
+        def search_actions():
+            actions = [a for a in self.findChildren(QAction)
+                       if a.text() and not a.menu() and a is not self._act_search_actions]
+            ActionSearch(self, actions).exec()
+        self._act_search_actions.triggered.connect(search_actions)
+        menu.addAction(self._act_search_actions)
+        self._guidance = None
+
+    def _show_welcome(self):
+        from sudoku_inator.ui.help_system import welcome
+        welcome(self, QSettings("Sudoku-inator", "Sudoku-inator"))
+
+    def _context_help(self):
+        focus = QApplication.focusWidget()
+        if focus in self._codebook_fields:
+            topic = "User Guide"
+        elif focus is self._grid:
+            topic = "User Guide"
+        else:
+            topic = "Getting Started"
+        self._help.open_topic(topic)
+
+    def _show_guidance(self, title, steps):
+        from sudoku_inator.ui.help_system import Guidance
+        if self._guidance is not None:
+            self._guidance.close()
+        self._guidance = Guidance(self, title, steps)
+        guide = self._guidance
+        guide.finished.connect(lambda: setattr(self, "_guidance", None)
+                               if self._guidance is guide else None)
+        self._guidance.show()
+
+    def _start_tour(self):
+        toolbar = self.findChild(QToolBar)
+        self._show_guidance("Feature Tour", [
+            ("File offers New Game, Open, Save, Import and Export. Use Help to replay this tour.", self.menuBar()),
+            ("Use these buttons to create a puzzle, save, undo, enter values and request hints.", toolbar),
+            ("Select an empty cell. Type 1–9 or press F4 for the full range. P toggles pencil marks.", self._grid),
+            ("Choose a hint mode here. Candidate is free; successful other hints spend allowance.", self.statusBar()),
+            ("Save progress with Ctrl+S. F1 opens context help; Ctrl+Shift+P searches actions.", self.menuBar()),
+        ])
+
+    def _guided_task(self):
+        from PyQt6.QtWidgets import QInputDialog
+        task, ok = QInputDialog.getItem(self, "Guided Tasks", "Choose a task", [
+            "Play and save a puzzle", "Import a puzzle", "Recover a backup"], 0, False)
+        if not ok:
+            return
+        if task == "Recover a backup":
+            self._help.open_topic("Save and Recovery")
+            steps = [
+                ("Keep a copy of the damaged save. Find its .bak sibling in your save folder.", None),
+                ("Use File → Open, choose All files, and select the .bak file. Cancel leaves your game intact.", self.menuBar()),
+                ("Verify the recovered board and notes. Use Save As to write a new JSON file.", self._grid),
+            ]
+        elif task == "Import a puzzle":
+            steps = [
+                ("Prepare a project JSON session or project-format text puzzle. Text omits solution and notes.", None),
+                ("Choose File → Import Puzzle and select the file. Invalid imports keep your existing board.", self.menuBar()),
+                ("Check the board, then Save As to retain a JSON session. Text imports lack solution-based hints.", self._grid),
+            ]
+        else:
+            steps = [
+                ("Use the open puzzle, or File → New Game to choose a variant and difficulty.", self.menuBar()),
+                ("Click an empty cell and enter a value. Use F4 above nine, P for notes, Ctrl+Z to undo.", self._grid),
+                ("Press F5 to check conflicts. Choose a hint mode and press H if needed.", self.statusBar()),
+                ("Press Ctrl+S and choose a JSON destination. Confirm the Saved message before closing.", self.menuBar()),
+            ]
+        self._show_guidance(task, steps)
 
     # ------------------------------------------------------------------
     # Toolbar
@@ -606,6 +707,9 @@ def main() -> None:
     app.setFont(make_font(11))
     window = MainWindow()
     window.show()
+    settings = QSettings("Sudoku-inator", "Sudoku-inator")
+    if not settings.value("welcome_seen", False, type=bool):
+        QTimer.singleShot(0, window._show_welcome)
     sys.exit(app.exec())
 
 

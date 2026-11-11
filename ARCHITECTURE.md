@@ -89,3 +89,11 @@ the session. There is no puzzle library UI; puzzle packs remain API-only.
 Puzzle editing, network sharing, cloud storage, multiplayer, and mobile layouts
 remain future scope. Architecture requirements and rationale are in
 [DECISIONS.md](DECISIONS.md) and [the constitution](speckit.constitution).
+
+## User assistance
+
+The shell owns Help commands and QSettings first-launch state.
+`ui/help_system.py` supplies an offline searchable topic dock, a nonmodal guide
+that highlights live widgets, an action-search dialog, and the welcome choices.
+Guidance invokes normal application actions and preserves their save safeguards.
+See [USER_ASSISTANCE.md](USER_ASSISTANCE.md) for maintenance and scope.

@@ -92,3 +92,33 @@ A strong PR should include:
 - any note about migration, compatibility, or UX impact.
 
 Thank you for helping make Sudoku-inator more reliable, more usable, and more extensible.
+
+## Branch and commit conventions
+
+Create a focused branch from the current `main`; `codex/` is the default prefix
+for agent-created branches. Submit changes through a pull request. GitHub rejected
+a direct push on 2026-11-11 because `main` requires a PR and five status checks.
+Do not bypass those rules; confirm the checks on the current PR revision.
+
+Use concise commit subjects describing the result. Existing history uses prefixes
+such as `fix:` and `chore:`; use these consistently when appropriate. Include
+relevant issue IDs and explain compatibility or migration effects in the PR.
+
+## Coding standards
+
+Follow the surrounding Python style, use type annotations at model boundaries,
+and keep UI, controller, service, solver, and persistence responsibilities aligned
+with [ARCHITECTURE.md](ARCHITECTURE.md). Ruff targets Python 3.13 with a configured
+line length of 100; mypy currently checks the model package. These checks cover
+only their configured scope. See [TESTING.md](TESTING.md) for regression and
+acceptance requirements.
+
+For documentation changes, check local links and Markdown formatting. Preserve
+dated evidence and distinguish implemented behavior from planned features.
+
+## Community and licensing
+
+Follow [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md). Project code is distributed under
+[GNU GPL version 3](LICENSE.md); identify the origin and applicable terms of any
+third-party contribution. Keep attributed research material and dependency licenses
+distinct from the project license.

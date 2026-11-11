@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,6 +7,8 @@ name = "sudoku-inator"
 version = "0.1.0"
 description = "Sudoku-inator: a Python + PyQt6 Sudoku application supporting multiple variants."
 requires-python = ">=3.13"
+license = "GPL-3.0-only"
+license-files = ["LICENSE.md"]
 dependencies = [
     "PyQt6>=6.10",
 ]
