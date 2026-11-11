@@ -47,3 +47,7 @@ docker-saves/
 
 # Logs
 *.log
+
+# Locally exported container images
+sudoku-inator*.tar
+sudoku-inator*.tar.gz

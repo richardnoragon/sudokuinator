@@ -52,51 +52,29 @@ sudoku-inator
 Use `sudoku-inator`; the former command was retired in the full rebrand.
 For play without developer tools, install with `python -m pip install -e .`.
 
-## Docker testing
+## Docker testing (Kubuntu / KDE Plasma)
 
-The Dockerfile packages the checked-out source (currently version 0.1.0).
-There is no tagged stable release yet, and release validation remains open.
-It uses the Python 3.13 line used by CI; `--pull` refreshes its base image.
+Build and launch the checked-out application on your Linux desktop:
 
 ```bash
 docker build --pull -t sudoku-inator:local .
+./scripts/docker-run.sh
 ```
 
-### Desktop play on Linux
+The launcher supports X11 and Plasma Wayland through XWayland, uses your session's
+Xauthority file, and keeps saves and welcome settings under `docker-saves/`.
+Use Save As under `/data` in the app. Docker must be accessible to your normal
+desktop user.
 
-Requires a local X11 session, or Wayland with XWayland, and a valid Xauthority
-file. Run from a terminal in your desktop session:
-
-```bash
-mkdir -p docker-saves
-export XAUTHORITY="${XAUTHORITY:-$HOME/.Xauthority}"
-test -f "$XAUTHORITY" && docker run --rm --init \
-  --user "$(id -u):$(id -g)" \
-  --hostname "$(hostname)" \
-  -e DISPLAY -e XAUTHORITY=/tmp/host.xauth -e HOME=/tmp \
-  -e QT_QPA_PLATFORM=xcb -e QT_X11_NO_MITSHM=1 \
-  --mount type=bind,src=/tmp/.X11-unix,dst=/tmp/.X11-unix,readonly \
-  --mount "type=bind,src=$XAUTHORITY,dst=/tmp/host.xauth,readonly" \
-  --mount "type=bind,src=$PWD/docker-saves,dst=/data" \
-  sudoku-inator:local
-```
-
-Save games under `/data` in the file dialog to keep them in `docker-saves`
-after the container closes. If the command does not start because the
-Xauthority file is missing, set `XAUTHORITY` to your desktop session's cookie
-file. Native desktop forwarding with these commands is Linux-only.
-
-### Automated tests
-
-The separate test target runs without a display server and includes the
-development dependencies and test suite:
+For a headless regression run:
 
 ```bash
 docker build --pull --target test -t sudoku-inator:test .
-docker run --rm --init sudoku-inator:test
+docker run --rm --init --network none sudoku-inator:test
 ```
 
-Rebuild after source changes. Neither target mounts your source tree.
+See [Docker testing](DOCKER_TESTING.md) for prerequisites, desktop smoke checks,
+image archive sharing, persistent folders, and troubleshooting.
 
 ## Playing
 
