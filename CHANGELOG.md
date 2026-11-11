@@ -28,6 +28,14 @@ the dated baseline below is not evidence of publication.
 
 ## [Unreleased]
 
+### Kubuntu developer container (2026-11-11)
+
+- Added a KDE Plasma X11/XWayland launcher with persistent saves/settings, host
+  user ownership, and a bounded Qt/help startup check.
+- Included GPLv3 license metadata in Docker build inputs and documented runtime
+  and headless test images, archive distribution, and Kubuntu troubleshooting.
+
+
 ### Documentation and assistance (2026-11-11)
 
 - Added FAQ, documentation contents, community conduct policy, and GNU GPLv3

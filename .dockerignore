@@ -1,6 +1,9 @@
 # Only files required by the runtime and test targets enter the build context.
 **
 !pyproject.toml
+!LICENSE.md
+!scripts/
+!scripts/docker-smoke.py
 !src/
 !src/**
 !tests/

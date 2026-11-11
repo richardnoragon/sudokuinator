@@ -75,6 +75,7 @@ maps the generic help outline to implemented desktop features and future work.
 | [codewords_sudoku_en.md](codewords_sudoku_en.md) | Current Codewords behavior and text format |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Contributor setup and review workflow |
 | [DECISIONS.md](DECISIONS.md) | Architecture rationale and direction |
+| [DOCKER_TESTING.md](DOCKER_TESTING.md) | Kubuntu desktop tester image, headless tests, archive sharing and troubleshooting |
 | [DOCUMENTATION.md](DOCUMENTATION.md) | Document index, precedence, and maintenance workflow |
 | [GOVERNANCE.md](GOVERNANCE.md) | Governance lifecycle and decision authority |
 | [IMPLEMENTATION_ISSUES.md](IMPLEMENTATION_ISSUES.md) | Open DOC issues and acceptance evidence |

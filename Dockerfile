@@ -30,7 +30,8 @@ RUN useradd --create-home --uid 1000 sudoku \
     && mkdir /data && chown sudoku:sudoku /data
 
 WORKDIR /app
-COPY pyproject.toml ./
+COPY pyproject.toml LICENSE.md ./
+COPY scripts/docker-smoke.py ./docker-smoke.py
 COPY src/ ./src/
 
 FROM base AS test
@@ -44,5 +45,6 @@ CMD ["python", "-m", "pytest", "-q", "-p", "no:cacheprovider"]
 FROM base AS runtime
 RUN python -m pip install --no-cache-dir .
 WORKDIR /data
+ENV XDG_CONFIG_HOME=/data/.config
 USER sudoku
 CMD ["sudoku-inator"]

@@ -19,6 +19,28 @@ Promote only after all [seven criteria](PROJECT_STATUS.md#alpha-readiness) are m
 Beta needs ordinary-user reliability evidence; publication also needs current
 platform CI, governance, and release approvals.
 
+## Docker validation (2026-11-11)
+
+Built from the working tree based on `5c39786` on an Ubuntu 26.04.1 KDE Wayland
+host, Docker Engine 29.1.3, amd64. This is an implementing-agent check, not the
+independent DOC-09 handoff or broad Kubuntu/platform acceptance.
+
+- Runtime and test image builds passed. Runtime: Python 3.13.18, PyQt6/Qt 6.12.0.
+- `./scripts/docker-run.sh --smoke-test`: passed using the real desktop xcb
+  platform through XWayland with the session's Xauthority file.
+- Runtime headless Qt/help/tour smoke check: passed with `QT_QPA_PLATFORM=offscreen`.
+- `docker run --rm --init --network none sudoku-inator:test`: **620 passed**.
+  Pytest 9.2.0 reported two existing fixture-decorator-order warnings in
+  `tests/test_performance.py`; there were no test failures.
+- Save and QSettings writes survived container removal and were restored in a
+  second container; host files retained UID/GID 1000:1000.
+- Runtime archive exported and successfully reloaded with `docker image load`.
+- Shell syntax, smoke-script Ruff, documentation links and Markdown checks passed.
+
+Runtime image ID: `sha256:9fcad7c25b4bf2b6bb8743ceafb741b99148ea34e95b637854bded75f997eac5`.
+The local image archive is not stored in Git; see [DOCKER_TESTING.md](DOCKER_TESTING.md)
+for build, run, sharing and manual acceptance instructions.
+
 ## Assistance validation (2026-11-11)
 
 Tested by the implementing Codex agent on Linux with Python 3.14.4, working tree

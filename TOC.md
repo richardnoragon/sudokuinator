@@ -18,6 +18,7 @@
 
 - [Contributing](CONTRIBUTING.md)
 - [Testing](TESTING.md)
+- [Docker testing on Kubuntu](DOCKER_TESTING.md)
 - [Release process](RELEASE_PROCESS.md)
 - [Release checklist](RELEASE_CHECKLIST.md)
 - [Security and backups](SECURITY.md)
